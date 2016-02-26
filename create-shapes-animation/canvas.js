@@ -147,7 +147,7 @@ $(document).ready(function(){
         canvas.canvasSetup();
     });
 
-    $('#canvas').on('click', function(){
+    $('#canvas').on('click', function(event){
         canvas.init(event);
     });
 });
