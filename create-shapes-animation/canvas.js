@@ -43,9 +43,9 @@ Canvas.prototype.init = function(event){
         speed =  getRand (1, 5),
         radius = getRand(25, 80),
         side = getRand(50, 150),
-        opasity = .05 + Math.random() * .5;
+        opacity = .05 + Math.random() * .5;
 
-    var figure = new Shapes(this.coordinateX, this.coordinateY, radius, side, speed, opasity, type, {
+    var figure = new Shapes(this.coordinateX, this.coordinateY, radius, side, speed, opacity, type, {
         x: directionX,
         y: directionY
     });
@@ -61,7 +61,7 @@ function Shapes (x, y, radius, side, speed, opacity, type, direction){
     this.radius = radius;
     this.side = side;
     this.speed = speed;
-    this.opasity = opacity;
+    this.opacity = opacity;
     this.type = type;
     this.direction = direction;
     this.endPoint;
@@ -78,7 +78,7 @@ Shapes.prototype.draw = function(ctx) {
         ctx.rect(this.x, this.y, this.side, this.side);
     }
 
-    ctx.fillStyle = 'rgba(185, 211, 238,' + this.opasity + ')';
+    ctx.fillStyle = 'rgba(185, 211, 238,' + this.opacity + ')';
     ctx.fill();
     ctx.stroke();
 };
@@ -120,9 +120,9 @@ Shapes.prototype.bounce = function(maxX, maxY) {
 
 function animationFrame() {
     var requestAnimationFrame = window.requestAnimationFrame ||
-                                window.mozRequestAnimationFrame ||
-                                window.webkitRequestAnimationFrame ||
-                                window.msRequestAnimationFrame;
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame;
 
     globalVars.ctx.clearRect(0, 0, globalVars.ctx.canvas.width, globalVars.ctx.canvas.height);
 
