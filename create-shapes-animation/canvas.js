@@ -1,5 +1,5 @@
 var initGlobalVar =  function () {
-    var canvas = document.getElementById("canvas");
+    var canvas = document.getElementById("canvas"),
         ctx = canvas.getContext('2d');
 
     return globalVars = {
@@ -13,7 +13,7 @@ var initGlobalVar =  function () {
         },
         allShapes: []
     }
-}
+};
 
 function getRand (min, max){
     return Math.floor(Math.random() * (max - min)) + min;
@@ -24,14 +24,14 @@ var Canvas = function () {
     this.coordinateY;
     this.w;
     this.h;
-}
+};
 
 Canvas.prototype.canvasSetup =  function(){
     this.w = $( window ).innerWidth();
     this.h = $( window ).innerHeight();
     globalVars.canvas.setAttribute('width', this.w);
     globalVars.canvas.setAttribute('height', this.h);
-}
+};
 
 Canvas.prototype.init = function(event){
     this.coordinateX= event.clientX;
@@ -43,25 +43,25 @@ Canvas.prototype.init = function(event){
         speed =  getRand (1, 5),
         radius = getRand(25, 80),
         side = getRand(50, 150),
-        opasity = .05 + Math.random() * .5;
+        opacity = .05 + Math.random() * .5;
 
-    var figure = new Shapes(this.coordinateX, this.coordinateY, radius, side, speed, opasity, type, {
+    var figure = new Shapes(this.coordinateX, this.coordinateY, radius, side, speed, opacity, type, {
         x: directionX,
         y: directionY
     });
 
     globalVars.allShapes.push(figure);
     animationFrame();
-}
+};
 
-function Shapes (x, y, radius, side, speed, opasity, type, direction){
+function Shapes (x, y, radius, side, speed, opacity, type, direction){
 
     this.x = x;
     this.y = y;
     this.radius = radius;
     this.side = side;
     this.speed = speed;
-    this.opasity = opasity;
+    this.opacity = opacity;
     this.type = type;
     this.direction = direction;
     this.endPoint;
@@ -78,7 +78,7 @@ Shapes.prototype.draw = function(ctx) {
         ctx.rect(this.x, this.y, this.side, this.side);
     }
 
-    ctx.fillStyle = 'rgba(185, 211, 238,' + this.opasity + ')';
+    ctx.fillStyle = 'rgba(185, 211, 238,' + this.opacity + ')';
     ctx.fill();
     ctx.stroke();
 };
@@ -103,26 +103,26 @@ Shapes.prototype.bounce = function(maxX, maxY) {
 
     if (this.x < this.startPoint) {
         this.direction.x = "right";
-    };
+    }
 
     if (this.x > maxX - this.endPoint) {
         this.direction.x = "left";
-    };
+    }
 
     if (this.y < this.startPoint) {
         this.direction.y = "down";
-    };
+    }
 
     if (this.y > maxY - this.endPoint) {
         this.direction.y = "up";
-    };
+    }
 };
 
 function animationFrame() {
     var requestAnimationFrame = window.requestAnimationFrame ||
-                                window.mozRequestAnimationFrame ||
-                                window.webkitRequestAnimationFrame ||
-                                window.msRequestAnimationFrame;
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame;
 
     globalVars.ctx.clearRect(0, 0, globalVars.ctx.canvas.width, globalVars.ctx.canvas.height);
 
