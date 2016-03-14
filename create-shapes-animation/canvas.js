@@ -1,5 +1,5 @@
 var initGlobalVar =  function () {
-    var canvas = document.getElementById("canvas");
+    var canvas = document.getElementById("canvas"),
         ctx = canvas.getContext('2d');
 
     return globalVars = {
@@ -13,7 +13,7 @@ var initGlobalVar =  function () {
         },
         allShapes: []
     }
-}
+};
 
 function getRand (min, max){
     return Math.floor(Math.random() * (max - min)) + min;
@@ -24,14 +24,14 @@ var Canvas = function () {
     this.coordinateY;
     this.w;
     this.h;
-}
+};
 
 Canvas.prototype.canvasSetup =  function(){
     this.w = $( window ).innerWidth();
     this.h = $( window ).innerHeight();
     globalVars.canvas.setAttribute('width', this.w);
     globalVars.canvas.setAttribute('height', this.h);
-}
+};
 
 Canvas.prototype.init = function(event){
     this.coordinateX= event.clientX;
@@ -52,16 +52,16 @@ Canvas.prototype.init = function(event){
 
     globalVars.allShapes.push(figure);
     animationFrame();
-}
+};
 
-function Shapes (x, y, radius, side, speed, opasity, type, direction){
+function Shapes (x, y, radius, side, speed, opacity, type, direction){
 
     this.x = x;
     this.y = y;
     this.radius = radius;
     this.side = side;
     this.speed = speed;
-    this.opasity = opasity;
+    this.opasity = opacity;
     this.type = type;
     this.direction = direction;
     this.endPoint;
@@ -103,19 +103,19 @@ Shapes.prototype.bounce = function(maxX, maxY) {
 
     if (this.x < this.startPoint) {
         this.direction.x = "right";
-    };
+    }
 
     if (this.x > maxX - this.endPoint) {
         this.direction.x = "left";
-    };
+    }
 
     if (this.y < this.startPoint) {
         this.direction.y = "down";
-    };
+    }
 
     if (this.y > maxY - this.endPoint) {
         this.direction.y = "up";
-    };
+    }
 };
 
 function animationFrame() {
