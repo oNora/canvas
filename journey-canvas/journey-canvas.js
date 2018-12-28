@@ -356,12 +356,12 @@ var zoom = (function ($) {
 
             if (hashArr.length != 0) {
                 $('.modal').show(200);
+                $('.overlay').css({ "display": "block" });
                 $('.modal h3' + cssSelector).css({ "display": "block", 'margin-top': '50%' });
             }
 
             scrollToStartParams.opacity = 0;
 
-            $("#overlay").show();
             $("body").css({ "overflow": "hidden" });
 
         } else {
@@ -370,7 +370,7 @@ var zoom = (function ($) {
             $('.modal h3' + cssSelector).css({ "display": "none" });
 
             scrollToStartParams.opacity = 1;
-            $("#overlay").hide();
+            $('.overlay').css({ "display": "none" });
             $("body").css({ "overflow": "" });
         }
     }
