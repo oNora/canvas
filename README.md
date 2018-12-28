@@ -11,4 +11,4 @@ The entire browser's window is a canvas. User can click anywhere on the screen. 
 #### 2. `journey-canvas`
 
 Landing page with canvas. When you load the page use scroll of the mouse or trackpad to scroll the page back and ford. Also you can click on the bubbles. This will scroll the page back and ford and show you specific messages depends on which bubbles you clicked. <br />
-Demo link [here](http://onora.github.io/canvas/journey-canvas/journey-canvas.html)
+Demo link [here](http://onora.github.io/canvas/journey-canvas/)
